@@ -2,7 +2,7 @@ Merge Sort
 
 Features
 -------------------------
-1. Best case, worst case, average case time complexity O(n) O(nlogn)
+1. Best case, worst case, average case time complexity O(nlogn)
 2. Efficient for sorting problems with large inputs
 
 Pseudocode
@@ -33,4 +33,3 @@ Merge(A, p, q, r):
         else 
             A[k] = R[j]
             j++
-
