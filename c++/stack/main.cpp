@@ -18,30 +18,26 @@ class Stack{
         bool empty();
 
     private:
-        vector<int> vec;
         int stack_size;
         int* array;
 
-        int start_ind;
         int end_ind;
 };
 
 Stack::Stack(void) {
     this->stack_size = 100;
     this->array = new int[this->stack_size];
-    this->start_ind = 0;
     this->end_ind = 0;
 }
 
 Stack::Stack(int stack_size) {
     this->stack_size = stack_size;
     this->array = new int[stack_size];
-    this->start_ind = 0;
     this->end_ind = 0;
 }
 
 Stack::~Stack() {
-    delete this->array;
+    delete[] this->array;
 }
 
 void Stack::push(int value) {
@@ -100,7 +96,7 @@ int Stack::pop() {
 }
 
 int Stack::size() {
-    return this->end_ind - this->start_ind;
+    return this->end_ind;
 }
 
 bool Stack::empty() {
@@ -110,7 +106,7 @@ bool Stack::empty() {
 }
 
 void Stack::print() {
-    for(int i = this->start_ind; i < this->end_ind; i++)
+    for(int i = 0; i < this->end_ind; i++)
         cout << *(this->array + i) << " ";
     cout << endl;
 }
