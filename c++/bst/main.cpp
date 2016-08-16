@@ -27,8 +27,8 @@ class Tree {
 
         void print();
         void inorder_traverse(Node* node, int level);
-        void preorder_traverse(Node* node);
-        void postorder_traverse(Node* node);
+        void preorder_traverse(Node* node, int level);
+        void postorder_traverse(Node* node, int level);
 
         Node* recursive_search(Node* node, int value);
         Node* iterative_search(Node* node, int value);
@@ -63,12 +63,20 @@ void Tree::inorder_traverse(Node* node, int level) {
     }
 }
 
-void Tree::preorder_traverse(Node* node) {
-
+void Tree::preorder_traverse(Node* node, int level) {
+    if(node) {
+        cout << node->value << "(" << level << ") ";
+        preorder_traverse(node->left, level + 1);
+        preorder_traverse(node->right, level + 1);
+    }
 }
 
-void Tree::postorder_traverse(Node* node) {
-
+void Tree::postorder_traverse(Node* node, int level) {
+    if(node) {
+        postorder_traverse(node->left, level + 1);
+        postorder_traverse(node->right, level + 1);
+        cout << node->value << "(" << level << ") ";
+    }
 }
 
 Node* Tree::recursive_search(Node* node, int value) {
@@ -200,6 +208,14 @@ int main() {
     tree.print();
     tree.insert(new Node(13));
     tree.print();
+
+    cout << endl;
+    cout << "Preorder" << endl;
+    tree.preorder_traverse(tree.root, 0);
+    cout << endl;
+    cout << "Postorder" << endl;
+    tree.postorder_traverse(tree.root, 0);
+    cout << endl << endl;
 
     tree.remove(tree.iterative_search(tree.root, 12));
     tree.print();
