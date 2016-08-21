@@ -1,0 +1,24 @@
+#include <vector>
+
+#ifndef VERTEX_H
+#define VERTEX_H
+
+using namespace std;
+
+class Vertex {
+    public:
+
+        Vertex(int value);
+        ~Vertex();
+
+        void add_adjacent(Vertex* vertex);
+
+        int value;
+        Vertex* parent;
+        int color;
+        int timestamp1;
+        int timestamp2;
+        vector<Vertex*> adj;
+};
+
+#endif
